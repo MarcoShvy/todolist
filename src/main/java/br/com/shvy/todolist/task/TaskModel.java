@@ -14,10 +14,6 @@ import java.util.UUID;
 @Data
 // CRIAR TABELA NO BANCO DE DADOS COM ESSE NOME E OS ATRIBUTOS SERAO OS DA CLASSE
 @Entity(name = "tb_tasks")
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class TaskModel {
 
     //DEFINE ID DA TABELA
@@ -38,4 +34,12 @@ public class TaskModel {
     //DATA ATUAL DE QUANDO FOI CRIADO
     @CreationTimestamp
     private LocalDateTime createdAt;
+
+    public void setTittle(String tittle) throws Exception {
+        if(tittle.length() > 50) {
+            throw new Exception("Titulo ultrapassou limite de 50 caracteres");
+        } else {
+            this.tittle = tittle;
+        }
+    }
 }
